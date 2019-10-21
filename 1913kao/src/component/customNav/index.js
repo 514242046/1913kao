@@ -26,6 +26,9 @@ let navData=[
 const {SubMenu} = Menu
 
 class CustomNav extends Component{
+  jump=(path)=>{
+    this.props.history.push(path)
+  }
   renderItem=(data)=>{
     return data.map((item,index)=>{
       if(item.children){
@@ -36,7 +39,7 @@ class CustomNav extends Component{
           </SubMenu>
         )
       }else{
-        return <Menu.Item >{item.name}</Menu.Item>
+        return <Menu.Item onClick={this.jump.bind(this,item.path)}>{item.name}</Menu.Item>
       }
       
     }) 
